@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Colecciones Elegantes | ÉLITE MODA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="js/Todo tipo de pantalla/Potentesinconfict.css">
+    <!-- Tus otros CSS aquí -->
+
+
     <style>
         * {
             margin: 0;
@@ -18,6 +23,7 @@
             font-family: 'Arial', sans-serif;
             background: #f0f0f0;
             overflow-x: hidden;
+            scroll-behavior: smooth; /* Scroll suave para toda la página */
         }
 
         /* BOTÓN FLOTANTE DEL MENÚ PRINCIPAL */
@@ -57,6 +63,46 @@
         .menu-float.active {
             background: linear-gradient(135deg, #ff6b6b, #ee5a52);
             transform: rotate(180deg);
+        }
+
+        /* BOTÓN IR AL INICIO - MEJORADO Y RESPONSIVE */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 996;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.8);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .back-to-top:active {
+            transform: translateY(-2px) scale(1.05);
         }
 
         /* OVERLAY */
@@ -650,10 +696,15 @@
             font-size: 1.1rem;
         }
 
-        /* RESPONSIVE */
+        /* RESPONSIVE MEJORADO */
         @media (max-width: 768px) {
             .menu-float {
                 display: flex;
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+                top: 15px;
+                left: 15px;
             }
             
             .sidebar {
@@ -731,6 +782,81 @@
             .about-subtitle {
                 font-size: 1.1rem;
             }
+
+            /* BOTÓN IR AL INICIO RESPONSIVE */
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Para tablets pequeñas */
+        @media (max-width: 480px) {
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .menu-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                top: 10px;
+                left: 10px;
+            }
+
+            .socials-main-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .main-content {
+                padding: 70px 15px 15px 15px;
+            }
+        }
+
+        /* Para dispositivos muy pequeños */
+        @media (max-width: 360px) {
+            .back-to-top {
+                bottom: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .menu-float {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Para dispositivos en orientación horizontal */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .menu-float {
+                top: 10px;
+                left: 10px;
+                width: 50px;
+                height: 50px;
+            }
         }
 
         @media (min-width: 769px) {
@@ -746,10 +872,16 @@
         }
     </style>
 </head>
+
 <body>
     <!-- BOTÓN DEL MENÚ PRINCIPAL -->
     <button class="menu-float" id="menuToggle">
         <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- BOTÓN IR AL INICIO MEJORADO -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+        <i class="fas fa-arrow-up"></i>
     </button>
     
     <!-- OVERLAY PARA CERRAR MENÚ PRINCIPAL -->
@@ -772,13 +904,13 @@
                 <li><a href="tel:+584163034215"><i class="fas fa-phone"></i> Llamadas</a></li>
                 <li><a href="PregunFrec.html"><i class="fas fa-star"></i> Preguntas frecuentes</a></li>
                 <!-- Elementos adicionales para demostrar el scroll -->
-                <li><a href="#"><i class="fas fa-gift"></i> Ofertas Especiales</a></li>
-                <li><a href="#"><i class="fas fa-rocket"></i> Nuevos Lanzamientos</a></li>
-                <li><a href="#"><i class="fas fa-ruler"></i> Guía de Tallas</a></li>
-                <li><a href="#"><i class="fas fa-hands"></i> Cuidado de Prendas</a></li>
-                <li><a href="#"><i class="fas fa-shipping-fast"></i> Envíos y Devoluciones</a></li>
-                <li><a href="#"><i class="fas fa-shield-alt"></i> Política de Privacidad</a></li>
-                <li><a href="#"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></li>
+                <li><a href="ofertas.html"><i class="fas fa-gift"></i> Ofertas Especiales</a></li>
+                <li><a href="nuevosprod.html"><i class="fas fa-rocket"></i> Nuevos Lanzamientos</a></li>
+                <li><a href="guiadetallas.html"><i class="fas fa-ruler"></i> Guía de Tallas</a></li>
+                <li><a href="cuidadoprendas.html"><i class="fas fa-hands"></i> Cuidado de Prendas</a></li>
+                <li><a href="EnviosyDevoluc.html"><i class="fas fa-shipping-fast"></i> Envíos y Devoluciones</a></li>
+                <li><a href="PoliticadePrivacidad.html"><i class="fas fa-shield-alt"></i> Política de Privacidad</a></li>
+                <li><a href="TerminosyCondiciones.html"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></li>
             </ul>
         </div>
     </aside>
@@ -836,7 +968,7 @@
             <span class="social-tooltip">TikTok</span>
         </a>
     </div>
-
+   
     <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
         <!-- SECCIÓN PROMOCIONAL -->
@@ -871,7 +1003,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <p class="about-description">
-                        En <strong>ÉLITE MODE</strong>, no simplemente creamos moda; forjamos identidades. 
+                        En <strong>ÉLITE MODA</strong>, no simplemente creamos moda; forjamos identidades. 
                         Desde nuestros inicios, hemos entendido que la ropa es más que tela y costuras: 
                         es la manifestación tangible de tu personalidad, tus aspiraciones y tu esencia única.
                     </p>
@@ -916,7 +1048,7 @@
                     <p class="value-description">Ediciones limitadas y diseños únicos que aseguran que tu estilo se mantenga distintivo y personal.</p>
                 </div>
                 
-                <div class="value-card">
+                .value-card {
                     <div class="value-icon">🌟</div>
                     <h3 class="value-title">Innovación</h3>
                     <p class="value-description">Constantemente exploramos nuevas técnicas y materiales para ofrecerte lo último en confort y estilo.</p>
@@ -953,6 +1085,15 @@
         </section>
     </main>
 
+    <body class="rps-reset"></body>
+    <!-- JavaScript -->
+    <script src="js/MenuMovilOpcional.js"></script>
+    <script src="js/Responsive.js"></script>
+    <script src="js/rps-animaciones.js"></script>
+    <script src="js/rps-component-iteractivos.js"></script>
+    <script src="js/rps-viewport.js"></script>
+    <!-- Tus otros JavaScript aquí -->
+    
     <script>
         // FUNCIONALIDAD DEL MENÚ PRINCIPAL
         const menuToggle = document.getElementById('menuToggle');
@@ -1005,19 +1146,67 @@
             btn.addEventListener('click', closeSocialsMenu);
         });
 
-        // COMPORTAMIENTO DE SCROLL PARA LOS BOTONES
+        // FUNCIONALIDAD DEL BOTÓN "IR AL INICIO" CON SCROLL SUPER SUAVE
+        const backToTop = document.getElementById('backToTop');
+
+        function scrollToPosition(targetPosition = 0) {
+        const startingY = window.pageYOffset;
+        const duration = 1000; // Duración en milisegundos
+        const start = performance.now();
+    
+    function step(currentTime) {
+        const elapsed = currentTime - start;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Función de easing para un movimiento más natural
+        const easeInOutCubic = progress < 0.5 
+            ? 4 * progress * progress * progress 
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+        
+        // Calcular la nueva posición
+        const newPosition = startingY + (targetPosition - startingY) * easeInOutCubic;
+        window.scrollTo(0, newPosition);
+        
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        }
+    }
+    
+    requestAnimationFrame(step);
+    
+    }
+
+        // Para ir al top (posición 0)
+        backToTop.addEventListener('click', () => {
+            scrollToPosition(120); // Cambia el 0 por cualquier posición que quieras
+    });
+
+        // COMPORTAMIENTO DE SCROLL MEJORADO PARA TODOS LOS DISPOSITIVOS
         let scrollTimeout;
-        let isScrolling = false;
+        let lastScrollTop = 0;
 
         function handleScroll() {
-            // Ocultar botones cuando se detecta scroll
-            menuToggle.classList.add('hidden');
-            socialsMainBtn.classList.add('hidden');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Si el submenú de redes está abierto, cerrarlo al hacer scroll
-            if (socialsSubmenu.classList.contains('active')) {
-                closeSocialsMenu();
+            // Mostrar/ocultar botón "Ir al inicio" basado en la posición del scroll
+            if (scrollTop > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
             }
+
+            // Ocultar botones cuando se detecta scroll rápido
+            if (Math.abs(scrollTop - lastScrollTop) > 10) {
+                menuToggle.classList.add('hidden');
+                socialsMainBtn.classList.add('hidden');
+                
+                // Si el submenú de redes está abierto, cerrarlo al hacer scroll
+                if (socialsSubmenu.classList.contains('active')) {
+                    closeSocialsMenu();
+                }
+            }
+            
+            lastScrollTop = scrollTop;
             
             // Limpiar timeout anterior
             clearTimeout(scrollTimeout);
@@ -1029,19 +1218,50 @@
             }, 800);
         }
 
-        // Event listener para el scroll
-        window.addEventListener('scroll', handleScroll);
+        // Event listener para el scroll con throttling para mejor rendimiento
+        let scrollThrottleTimeout;
+        window.addEventListener('scroll', () => {
+            if (!scrollThrottleTimeout) {
+                scrollThrottleTimeout = setTimeout(() => {
+                    handleScroll();
+                    scrollThrottleTimeout = null;
+                }, 50);
+            }
+        });
 
-        // Inicialización
+        // Inicialización mejorada
         console.log('🚀 Página ÉLITE MODA completamente cargada');
         console.log('📱 Menú principal y submenú de redes listos');
-        console.log('🎯 Comportamiento de scroll activado');
+        console.log('🎯 Comportamiento de scroll optimizado para todos los dispositivos');
+        console.log('⬆️ Botón "Ir al inicio" con scroll super suave configurado');
 
         // Asegurar que los botones estén visibles al cargar la página
         window.addEventListener('load', () => {
             menuToggle.classList.remove('hidden');
             //socialsMainBtn.classList.remove('hidden');
+            
+            // Verificar posición inicial del scroll para el botón "Ir al inicio"
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            }
+
+            // Detectar tipo de dispositivo
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            console.log(`📱 Dispositivo detectado: ${isMobile ? 'Móvil' : 'Escritorio'}`);
+        });
+
+        // Manejar cambios de orientación en dispositivos móviles
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                // Recalcular posición después del cambio de orientación
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            }, 300);
         });
     </script>
+
 </body>
 </html>
